@@ -1,12 +1,10 @@
 const outputArea = document.getElementById('supreme-area');
 
-function updateLogo () {
-  const textInputValue = document.getElementById('text-input').value;
-  const sizeSliderValue = document.getElementById('size-slider').value;
-  const outputStyle = 'font-size:' + sizeSliderValue + 'pt;' + 'padding-left:' + (sizeSliderValue / 30) + 'vh;' + 'padding-right:' + (sizeSliderValue / 30) + 'vh;' + 'padding-bottom:' + (sizeSliderValue / 40) + 'vh';
+document.getElementById('text-input').onkeyup = function (e) {
+  outputArea.innerHTML = e.target.value !== '' ? e.target.value : 'Supreme';
+};
 
-  outputArea.setAttribute('style', outputStyle);
-  outputArea.innerHTML = textInputValue !== '' ? textInputValue : 'Supreme';
-}
-
-setInterval(updateLogo, 30);
+document.getElementById('size-slider').onmousemove = function (e) {
+  outputArea.style.fontSize = e.target.value + 'pt';
+  outputArea.style.padding = '0 ' + e.target.value / 30 + 'vh ' + e.target.value / 40 + 'vh';
+};
